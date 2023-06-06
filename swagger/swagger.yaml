@@ -1,0 +1,214 @@
+swagger: "2.0"
+info:
+  title: Sample API
+  description: API description in Markdown.
+  version: 1.0.0
+
+host: localhost:3000
+basePath: /
+schemes:
+  - http
+
+paths:
+  /mahasiswa/:
+    get:
+      summary: Returns a list of all students.
+      produces:
+        - application/json
+      responses:
+        200:
+          description: OK
+    post:
+      summary: Creates a new student.
+      produces:
+        - application/json
+      parameters:
+        - name: body
+          in: body
+          description: Student object that needs to be added to the database
+          required: true
+          schema:
+            type: object
+            properties:
+              nama:
+                type: string
+                example: John Doe
+              nim:
+                type: string
+                example: 1234567
+                unique: true
+              kelas:
+                type: string
+                example: A
+              jenisKelamin:
+                type: string
+                enum: ['Laki-laki', 'Perempuan']
+                example: Laki-laki
+              semester:
+                type: integer
+                example: 3
+      responses:
+        200:
+          description: OK
+    
+  /mahasiswa/{id}/:
+    get:
+      summary: Returns a single student by ID.
+      produces:
+        - application/json
+      parameters:
+        - name: id
+          in: path
+          description: ID of the student that needs to be returned
+          required: true
+          type: string
+      responses:
+        200:
+          description: OK
+    put:
+      summary: Updates an existing student.
+      produces:
+        - application/json
+      parameters:
+        - name: id
+          in: path
+          description: ID of the student that needs to be updated
+          required: true
+          type: string
+        - name: body
+          in: body
+          description: Student object that needs to be updated
+          required: true
+          schema:
+            type: object
+            properties:
+              nama:
+                type: string
+                example: John Doe
+              nim:
+                type: string
+                example: 1234567
+              kelas:
+                type: string
+                example: A
+              jenisKelamin:
+                type: string
+                enum: ['Laki-laki', 'Perempuan']
+                example: Laki-laki
+              semester:
+                type: integer
+                example: 3
+      responses:
+        200:
+          description: OK
+    delete:
+      summary: Deletes an existing student.
+      produces:
+        - application/json
+      parameters:
+        - name: id
+          in: path
+          description: ID of the student that needs to be deleted
+          required: true
+          type: string
+          example: "647f71fce65b83133cea94e5"
+      responses:
+        200:
+          description: OK
+
+
+  /matkul/:
+    get:
+      summary: Returns a list of all courses.
+      produces:
+        - application/json
+      responses:
+        200:
+          description: OK
+    post:
+      summary: Creates a new course.
+      produces:
+        - application/json
+      parameters:
+        - name: body
+          in: body
+          description: Course object that needs to be added to the database
+          required: true
+          schema:
+            type: object
+            properties:
+              kode:
+                type: string
+                example: WD101
+              nama:
+                type: string
+                example: Web Development
+              sks:
+                type: integer
+                example: 3
+              kelas:
+                type: string
+                example: A
+      responses:
+        200:
+          description: OK
+    
+  /matkul/{id}/:
+    get:
+      summary: Returns a single course by ID.
+      produces:
+        - application/json
+      parameters:
+        - name: id
+          in: path
+          description: ID of the course that needs to be returned
+          required: true
+          type: string
+      responses:
+        200:
+          description: OK
+    put:
+      summary: Updates an existing course.
+      produces:
+        - application/json
+      parameters:
+        - name: id
+          in: path
+          description: ID of the course that needs to be updated
+          required: true
+          type: string
+        - name: body
+          in: body
+          description: Course object that needs to be updated
+          required: true
+          schema:
+            type: object
+            properties:
+              kode:
+                type: string
+                example: WD101
+              nama:
+                type: string
+                example: Web Development
+              sks:
+                type: integer
+                example: 3
+              kelas:
+                type: string
+                example: A
+      responses:
+        200:
+          description: OK
+    delete:
+      summary: Deletes an existing course.
+      produces:
+        - application/json
+      parameters:
+        - name: id
+          in: path
+          description: ID of the course that needs to be deleted
+          required: true
+          type: string
+      responses:
+        200:
+          description: OK

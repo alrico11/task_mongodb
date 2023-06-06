@@ -2,6 +2,7 @@ const Student = require('../models/mahasiswa');
 
 // GET all students
 exports.getAllStudents = async (req, res) => {
+  res.header('Access-Control-Allow-Origin', '*');
   try {
     const students = await Student.find();
     res.status(200).json(students);
@@ -12,6 +13,7 @@ exports.getAllStudents = async (req, res) => {
 
 // GET a single student by id
 exports.getStudentById = async (req, res) => {
+  res.header('Access-Control-Allow-Origin', '*');
   try {
     const student = await Student.findById(req.params.id);
     if (!student) {
@@ -25,6 +27,7 @@ exports.getStudentById = async (req, res) => {
 
 // CREATE a new student
 exports.createStudent = async (req, res) => {
+  res.header('Access-Control-Allow-Origin', '*');
   const student = new Student({
     nama: req.body.nama,
     nim: req.body.nim,
@@ -43,6 +46,7 @@ exports.createStudent = async (req, res) => {
 
 // UPDATE an existing student by id
 exports.updateStudent = async (req, res) => {
+  res.header('Access-Control-Allow-Origin', '*');
   try {
     const student = await Student.findById(req.params.id);
     if (!student) {
@@ -64,14 +68,15 @@ exports.updateStudent = async (req, res) => {
 
 // DELETE a student by id
 exports.deleteStudent = async (req, res) => {
-    try {
-        const result = await Student.deleteOne({ _id: req.params.id });
-        if (result.deletedCount === 0) {
-          return res.status(404).json({ message: 'Student not found' });
-        }
-    
-        res.status(200).json({ message: 'Student deleted' });
-      } catch (error) {
-        res.status(500).json({ message: error.message });
-      }
+  res.header('Access-Control-Allow-Origin', '*');
+  try {
+    const result = await Student.deleteOne({ _id: req.params.id });
+    if (result.deletedCount === 0) {
+      return res.status(404).json({ message: 'Student not found' });
+    }
+
+    res.status(200).json({ message: 'Student deleted' });
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
 };
