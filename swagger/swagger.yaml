@@ -12,6 +12,8 @@ schemes:
 paths:
   /mahasiswa/:
     get:
+      tags:
+        - "Mahasiswa"
       summary: Returns a list of all students.
       produces:
         - application/json
@@ -19,6 +21,8 @@ paths:
         200:
           description: OK
     post:
+      tags:
+        - "Mahasiswa"
       summary: Creates a new student.
       produces:
         - application/json
@@ -53,6 +57,8 @@ paths:
     
   /mahasiswa/{id}/:
     get:
+      tags:
+        - "Mahasiswa"
       summary: Returns a single student by ID.
       produces:
         - application/json
@@ -66,6 +72,8 @@ paths:
         200:
           description: OK
     put:
+      tags:
+        - "Mahasiswa"
       summary: Updates an existing student.
       produces:
         - application/json
@@ -102,6 +110,8 @@ paths:
         200:
           description: OK
     delete:
+      tags:
+        - "Mahasiswa"
       summary: Deletes an existing student.
       produces:
         - application/json
@@ -119,6 +129,8 @@ paths:
 
   /matkul/:
     get:
+      tags:
+        - "Mata Kuliah"
       summary: Returns a list of all courses.
       produces:
         - application/json
@@ -126,6 +138,8 @@ paths:
         200:
           description: OK
     post:
+      tags:
+        - "Mata Kuliah"
       summary: Creates a new course.
       produces:
         - application/json
@@ -155,6 +169,8 @@ paths:
     
   /matkul/{id}/:
     get:
+      tags:
+        - "Mata Kuliah"
       summary: Returns a single course by ID.
       produces:
         - application/json
@@ -168,6 +184,8 @@ paths:
         200:
           description: OK
     put:
+      tags:
+        - "Mata Kuliah"
       summary: Updates an existing course.
       produces:
         - application/json
@@ -200,6 +218,8 @@ paths:
         200:
           description: OK
     delete:
+      tags:
+        - "Mata Kuliah"
       summary: Deletes an existing course.
       produces:
         - application/json
